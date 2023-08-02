@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html>
 <head>
 <title>Game of 15</title>
+<style>
+td {font-size:72px; text-align:center; border:solid; margin:2px;}
+table {border:solid}
+td.empty {border:none;}
+</style>
+<script type="module" src="./javascript.js">
+import{ swap } from "./javascript.js";
+</script>
 </head>
 <body>
 <table>
-<tr><td>1</td><td>2</td><td>3</td><td>4</td>
+<tr><td id='0'>1</td><td id='1'>2</td><td id='2'>3</td><td id='3'>4</td>
 </tr>
-<tr><td>5</td><td>6</td><td>7</td><td>8</td>
+<tr><td id='4'>5</td><td id='5'>6</td><td id='6'>7</td><td id='7'>8</td>
 </tr>
-<tr><td>9</td><td>10</td><td>11</td><td>12</td>
+<tr><td id='8'>9</td><td id='9'>10</td><td id='10'>11</td><td id='11'>12</td>
 </tr>
-<tr><td>13</td><td>14</td><td>15</td><td> </td>
+<tr><td id='12'>13</td><td id='13'>14</td><td id='14'>15</td><td id='15' class='empty'> </td>
 </tr>
 </table>
+<button onclick='swap(0,1,1,1)'>GO</button>
 </body>
-</html>
