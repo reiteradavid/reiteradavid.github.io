@@ -11,4 +11,4 @@ function swap(y1,x1,y2,x2){
     el1.style.border = elTempstyleborder;
 }
 
-export{swap}
+export{swap};
