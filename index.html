@@ -6,9 +6,7 @@ td {font-size:72px; text-align:center; border:solid; margin:2px;}
 table {border:solid; table-layout: fixed;width:384px;}
 td.empty {border:none;}
 </style>
-<script>var s = {};</script>
-<script type="module" src="script.js">
-import {permutation, generateWithCheck, solveAll, solveOneStep,debug} from "./script.js";
+<script src="script.js">
 </script>
 </head>
 <body>
@@ -28,7 +26,7 @@ import {permutation, generateWithCheck, solveAll, solveOneStep,debug} from "./sc
 <tr><td id='12'>13</td><td id='13'>14</td><td id='14'>15</td><td id='15' class='empty'> </td>
 </tr>
 </table>
-<button onclick='s.generateWithCheck(s.permutation);'>GENERATE</button>
-<button onclick='s.solveOneStep();'>SOLVE 1 STEP</button>
-<button onclick='s.solveAll();'>SOLVE</button>
+<button onclick='generateWithCheck(permutation);'>GENERATE</button>
+<button onclick='solveOneStep();'>SOLVE 1 STEP</button>
+<button onclick='solveAll();'>SOLVE</button>
 </body>
