@@ -1,5 +1,5 @@
 let debug = true;
-export let permutation = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0];
+let permutation = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0];
 class CoordinatePair {
     constructor(y, x) {
         this.y = y;
@@ -153,7 +153,7 @@ function printArrayArray(a) {
     }
     console.log("_-_-_-_-_-");
 }
-export function generateWithCheck(array) {
+function generateWithCheck(array) {
 		permutation = generate(array);
 		let inversions = 0;
 		for (let i = 0;i < 16;i++) {
@@ -296,12 +296,12 @@ function display(){
 	
 }
 var waittime = 500;
-export async function solveAll(){
+async function solveAll(){
     while (solveOneStep() !== -1) {
 	    await new Promise(r => setTimeout(r, waittime));
 	}
 }
-export function solveOneStep(){
+function solveOneStep(){
 debug || console.log("-_-_-_-_-_-");
     if (solveTheOtherWay) {//start
 			//rotate 180 degrees
@@ -638,4 +638,4 @@ debug || console.log("-_-_-_-_-_-");
 	}
 	display();
 }
-export default s; 
+export {permutation, generateWithCheck, solveAll, solveOneStep,debug}; 
