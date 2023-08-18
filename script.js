@@ -154,7 +154,7 @@ function printArrayArray(a) {
     }
     console.log("_-_-_-_-_-");
 }
-function generateWithCheck(array) {
+export function generateWithCheck(array) {
 		permutation = generate(array);
 		let inversions = 0;
 		for (let i = 0;i < 16;i++) {
@@ -297,12 +297,12 @@ function display(){
 	
 }
 var waittime = 500;
-async function solveAll(){
+export async function solveAll(){
     while (solveOneStep() !== -1) {
 	    await new Promise(r => setTimeout(r, waittime));
 	}
 }
-function solveOneStep(){
+export function solveOneStep(){
 debug || console.log("-_-_-_-_-_-");
     if (solveTheOtherWay) {//start
 			//rotate 180 degrees
@@ -640,4 +640,4 @@ debug || console.log("-_-_-_-_-_-");
 	display();
 }
 };
-export default script; 
+export default s; 
