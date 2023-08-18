@@ -1,4 +1,3 @@
-const script = () => {
 let debug = true;
 export let permutation = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0];
 class CoordinatePair {
@@ -639,5 +638,4 @@ debug || console.log("-_-_-_-_-_-");
 	}
 	display();
 }
-};
 export default s; 
