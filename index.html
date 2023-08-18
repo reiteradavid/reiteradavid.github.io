@@ -6,9 +6,9 @@ td {font-size:72px; text-align:center; border:solid; margin:2px;}
 table {border:solid; table-layout: fixed;width:384px;}
 td.empty {border:none;}
 </style>
-<script>var script = {};</script>
+<script>var s = {};</script>
 <script type="module src="script.js"">
-import script from "./script.js";
+import s from "./script.js";
 </script>
 </head>
 <body>
@@ -28,8 +28,7 @@ import script from "./script.js";
 <tr><td id='12'>13</td><td id='13'>14</td><td id='14'>15</td><td id='15' class='empty'> </td>
 </tr>
 </table>
-<button onclick='generateWithCheck(permutation);'>GENERATE</button>
-<button onclick='console.log(moveTo(new CoordinatePair(0,1),new CoordinatePair(3,2),[]));'> From 0,1 to 3,2</button>
-<button onclick='solveOneStep();'>SOLVE 1 STEP</button>
-<button onclick='solveAll();'>SOLVE</button>
+<button onclick='s.generateWithCheck(permutation);'>GENERATE</button>
+<button onclick='s.solveOneStep();'>SOLVE 1 STEP</button>
+<button onclick='s.solveAll();'>SOLVE</button>
 </body>
