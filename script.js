@@ -638,4 +638,3 @@ debug || console.log("-_-_-_-_-_-");
 	}
 	display();
 }
-export {permutation, generateWithCheck, solveAll, solveOneStep,debug}; 
