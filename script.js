@@ -638,4 +638,4 @@ debug || console.log("-_-_-_-_-_-");
 	}
 	display();
 }
-export default everything; 
+export default script; 
