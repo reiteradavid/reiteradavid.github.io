@@ -142,7 +142,7 @@ function pe(a,b) {//permutation equals; starts at 1, ends 16.
 	}
 let tempSet = false;
 
-solveTheOtherWay = false;
+let solveTheOtherWay = false;
 function printArrayArray(a) {
 	let str = "";
 	for (let i = 0; i < 4; i++) {
