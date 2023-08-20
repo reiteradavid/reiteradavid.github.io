@@ -288,19 +288,67 @@ function display(){
 	    cell = document.getElementById(i);
 		if (permutation[i] === 0){
 			cell.innerHTML = " ";
-		    cell.style.border = 'none';
+		    cell.className = 'empty';
 		} else {
 		    cell.innerHTML = permutation[i];
-			cell.style.border = 'solid'
+			cell.className = ''
 		}
 	}
-	
+		let inversions = 0;
+	for (let i = 0;i < 16;i++) {
+		for (let j = i + 1;j<16;j++) {
+			if (permutation[i] !== 0 && permutation[j] != 0)
+				if (permutation[j] < permutation[i]){ ++inversions;}
+		}
+	}
+	for (let i = 0;i < 16;i++) {
+		if (permutation[i] === 0) {
+			inversions += Math.floor(i / 4);
+			break;
+		}
+	}
+	if (inversions % 2 === 0) {
+		solveTheOtherWay =  true;
+	}else {
+	    solveTheOtherWay = false;
+	}
+	if (solveTheOtherWay) {	
+		for (let i = 0; i < 8; i++) {
+			let temp = permutation[i];
+			permutation[i] = permutation[15-i];
+			permutation[15-i] = temp;
+		}
+		for (let i = 0;i < 16; i++) {
+			permutation[i] = (16-permutation[i])%16;
+		}
+	}
+	disableSolve = true;
+	for (let i = 0;i < permutation.length;i++){
+	    if ((i + 1) % 16 !== permutation[i]){
+	        disableSolve = false;
+			break;
+	    }
+	}
+	document.getElementById('solve').disabled = disableSolve;
+	if (solveTheOtherWay) {	
+		for (let i = 0; i < 8; i++) {
+			let temp = permutation[i];
+			permutation[i] = permutation[15-i];
+			permutation[15-i] = temp;
+		}
+		for (let i = 0;i < 16; i++) {
+			permutation[i] = (16-permutation[i])%16;
+		}
+	}
 }
 var waittime = 500;
 async function solveAll(){
-    while (solveOneStep() !== -1) {
+    while (solveOneStep() !== -1 && solving) {
 	    await new Promise(r => setTimeout(r, waittime));
+		
 	}
+	document.getElementById("solve").innerHTML = "SOLVE";
+	solving = false;
 }
 function solveOneStep(){
 debug || console.log("-_-_-_-_-_-");
@@ -339,6 +387,16 @@ debug || console.log("-_-_-_-_-_-");
 			stage = 8;
 		} else {
 		stage = 9;//all complete
+		if (solveTheOtherWay) {
+			for (let i = 0; i < 8; i++) {
+			        let temp = permutation[i];
+			        permutation[i] = permutation[15-i];
+			        permutation[15-i] = temp;
+		        }
+		        for (let i = 0;i < 16; i++) {
+			        permutation[i] = (16-permutation[i])%16;
+		        }
+	        }
 		return -1;
 		}
 		if (stage === -1) {
@@ -638,4 +696,41 @@ debug || console.log("-_-_-_-_-_-");
 		}
 	}
 	display();
+}
+function ifNextToEmptySwap(id){
+    if (solving) {
+	    debug || console.log("Cannot Move, solving.");
+		return;
+	}
+    let c = new CoordinatePair(Math.floor(id/4),id%4);
+    let empty = new CoordinatePair(-99,-99);
+    if (c.x > 0 && permutation[4 * c.y + c.x - 1] === 0) {
+        empty.y = c.y;
+        empty.x = c.x - 1;
+    } else if (c.x < 3 && permutation[4 * c.y + c.x + 1] === 0) {
+        empty.y = c.y;
+        empty.x = c.x + 1;
+    } else if (c.y > 0 && permutation[4 * c.y + c.x - 4] === 0) {
+        empty.y = c.y - 1;
+        empty.x = c.x;
+    } else if (c.y < 3 && permutation[4 * c.y + c.x + 4] === 0) {
+        empty.y = c.y + 1;
+        empty.x = c.x;
+    } else {
+        debug || console.log("Tile Click Error:Not near empty!");
+		return;
+    }
+    permutation[empty.y * 4 + empty.x] = permutation[c.y * 4 + c.x];
+    permutation[c.y * 4 + c.x] = 0;
+	display();
+}
+let solving = false;
+function SolveButton(){
+    if (!solving){//SOLVE
+	    document.getElementById('solve').innerHTML = "STOP";
+	    solving = true;
+		solveAll();
+	} else{//STOP
+	    solving = false;
+	}
 }
