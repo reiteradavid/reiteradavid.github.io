@@ -9,7 +9,7 @@ td.empty {border:none;}
 <script src="script.js">
 </script>
 </head>
-<body>
+<body onload = 'display();'>
 <table>
 <colgroup>
 <col style = 'width:25%;'></col>
@@ -17,16 +17,15 @@ td.empty {border:none;}
 <col style = 'width:25%;'></col>
 <col style = 'width:25%;'></col>
 </colgroup>
-<tr><td id='0'>1</td><td id='1'>2</td><td id='2'>3</td><td id='3'>4</td>
+<tr><td id='0' onclick='ifNextToEmptySwap(id);'>1</td><td id='1' onclick='ifNextToEmptySwap(id);'>2</td><td id='2' onclick='ifNextToEmptySwap(id);'>3</td><td id='3' onclick='ifNextToEmptySwap(id);'>4</td>
 </tr>
-<tr><td id='4'>5</td><td id='5'>6</td><td id='6'>7</td><td id='7'>8</td>
+<tr><td id='4' onclick='ifNextToEmptySwap(id);'>5</td><td id='5' onclick='ifNextToEmptySwap(id);'>6</td><td id='6' onclick='ifNextToEmptySwap(id);'>7</td><td id='7' onclick='ifNextToEmptySwap(id);'>8</td>
 </tr>
-<tr><td id='8'>9</td><td id='9'>10</td><td id='10'>11</td><td id='11'>12</td>
+<tr><td id='8' onclick='ifNextToEmptySwap(id);'>9</td><td id='9' onclick='ifNextToEmptySwap(id);'>10</td><td id='10' onclick='ifNextToEmptySwap(id);'>11</td><td id='11' onclick='ifNextToEmptySwap(id);'>12</td>
 </tr>
-<tr><td id='12'>13</td><td id='13'>14</td><td id='14'>15</td><td id='15' class='empty'> </td>
+<tr><td id='12' onclick='ifNextToEmptySwap(id);'>13</td><td id='13' onclick='ifNextToEmptySwap(id);'>14</td><td id='14' onclick='ifNextToEmptySwap(id);'>15</td><td id='15' onclick='ifNextToEmptySwap(id);' class='empty'> </td>
 </tr>
 </table>
 <button onclick='generateWithCheck(permutation);'>GENERATE</button>
-<button onclick='solveOneStep();'>SOLVE 1 STEP</button>
-<button onclick='solveAll();'>SOLVE</button>
+<button id = 'solve' disabled='' onclick='solveButton();'>SOLVE</button>
 </body>
