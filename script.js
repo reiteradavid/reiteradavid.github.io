@@ -252,6 +252,7 @@ function generateWithCheck(array) {
 		for (let i = 0; i < route.length;i++){
 		str += "(" + route[i].y + "," + route[i].x + ") "
 		}
+		debug || console.log(str);
 		return route;
 		
 	}
