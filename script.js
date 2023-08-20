@@ -725,7 +725,7 @@ function ifNextToEmptySwap(id){
 	display();
 }
 let solving = false;
-function SolveButton(){
+function solveButton(){
     if (!solving){//SOLVE
 	    document.getElementById('solve').innerHTML = "STOP";
 	    solving = true;
