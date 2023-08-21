@@ -7,7 +7,7 @@ class CoordinatePair {
     }
 }
 function generateVariableSetup(){
-    permutation = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0];
+    
 	nextSquare = 1;
     nextSquareLocation = 0;
     forbiddenCoordsAP = [];
@@ -271,6 +271,7 @@ function swap(y1,x1,y2,x2){
     el1.style.border = elTempstyleborder;
 }
 function generate(array){
+    permutation = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0];
     generateVariableSetup();
     let currentIndex = array.length,  randomIndex;
     while (currentIndex != 0) {
@@ -349,6 +350,7 @@ async function solveAll(){
 	}
 	document.getElementById("solve").innerHTML = "SOLVE";
 	solving = false;
+	generateVariableSetup();
 }
 function solveOneStep(){
 debug || console.log("-_-_-_-_-_-");
