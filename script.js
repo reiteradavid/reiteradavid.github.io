@@ -7,7 +7,6 @@ class CoordinatePair {
         }
 }
 function generateVariableSetup() {
-
         nextSquare = 1;
         nextSquareLocation = 0;
         forbiddenCoordsAP = [];
@@ -158,7 +157,7 @@ function generateWithCheck(array) {
         let inversions = 0;
         for (let i = 0; i < 16; i++) {
                 for (let j = i + 1; j < 16; j++) {
-                        if (permutation[i] !== 0 && permutation[j] != 0)
+                        if (permutation[i] !== 0 && permutation[j] !== 0)
                                 if (permutation[j] < permutation[i]) { ++inversions; }
                 }
         }
@@ -274,7 +273,7 @@ function generate(array) {
         permutation = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0];
         generateVariableSetup();
         let currentIndex = array.length, randomIndex;
-        while (currentIndex != 0) {
+        while (currentIndex !== 0) {
                 randomIndex = Math.floor(Math.random() * currentIndex);
                 currentIndex--;
                 [array[currentIndex], array[randomIndex]] = [
@@ -298,8 +297,9 @@ function display() {
         let inversions = 0;
         for (let i = 0; i < 16; i++) {
                 for (let j = i + 1; j < 16; j++) {
-                        if (permutation[i] !== 0 && permutation[j] != 0)
-                                if (permutation[j] < permutation[i]) { ++inversions; }
+                        if (permutation[i] !== 0 && permutation[j] !== 0 && permutation[j] < permutation[i]) {
+                                ++inversions;
+                        }
                 }
         }
         for (let i = 0; i < 16; i++) {
@@ -308,11 +308,7 @@ function display() {
                         break;
                 }
         }
-        if (inversions % 2 === 0) {
-                solveTheOtherWay = true;
-        } else {
-                solveTheOtherWay = false;
-        }
+        solveTheOtherWay = inversions % 2// (inversions % 2 === 0)
         if (solveTheOtherWay) {
                 for (let i = 0; i < 8; i++) {
                         let temp = permutation[i];
@@ -410,8 +406,8 @@ function solveOneStep() {
         startIncluding.y = 0; startIncluding.x = -1;
         lengthH = BL;//4
         for (let stageCopy = 0; stageCopy < Math.floor(stage / 2); stageCopy++) {
-                //if stageCopy == even = row
-                //if stageCopy == odd = column
+                //if stageCopy === even = row
+                //if stageCopy === odd = column
                 if (stageCopy % 2 === 1) {
                         lengthH -= 1;
                         startIncluding.y++;
@@ -640,7 +636,7 @@ function solveOneStep() {
                         debug || console.log(str);
                         swapWithEmpty(emptyRoute[1]);
                 }
-        } else {//stage % 2 == 1; turning ready into complete
+        } else {//stage % 2 === 1; turning ready into complete
                 --stage;
                 stage = Math.floor(stage / 2);
                 if ((permutation[emptyLocationForReadyToCompleteTransferForEachStage[stage].y * 4 + emptyLocationForReadyToCompleteTransferForEachStage[stage].x]) === 0) {
@@ -663,8 +659,8 @@ function solveOneStep() {
                         [new CoordinatePair(2, 2), new CoordinatePair(2, 1)]];
                         swapWithEmpty(emptyLocationOrder[stage][ReadyToCompleteLeft]);
                         if (ReadyToCompleteLeft === 0) {
-                                //if stage == even = row
-                                //if stage == odd = column
+                                //if stage === even = row
+                                //if stage === odd = column
                                 if (stage % 2 === 1) {
                                         lengthH -= 1;
                                         startIncluding.y++;
